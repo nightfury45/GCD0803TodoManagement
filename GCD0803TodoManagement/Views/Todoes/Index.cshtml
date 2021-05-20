@@ -5,11 +5,27 @@
 
 <h2>Index TodoesController</h2>
 
-<p>Hello Everybody from TodoesController</p>
-
-<ul>
-	<li>@Model.Id</li>
-	<li>@Model.Description</li>
-	<li>@Model.Category</li>
-	<li>@Model.DueDate</li>
-</ul>
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Description</th>
+			<th scope="col">Category</th>
+			<th scope="col">Due Date</th>
+			<th scope="col">Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>@Model.Id</td>
+			<td>@Model.Description</td>
+			<td>@Model.Category</td>
+			<td>@Model.DueDate</td>
+			<td>
+				<a href="#" class="btn btn-primary">Details</a>
+				<a href="#" class="btn btn-danger">Delete</a>
+				<a href="#" class="btn btn-default">Edit</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
