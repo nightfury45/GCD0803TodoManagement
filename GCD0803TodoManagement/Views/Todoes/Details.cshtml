@@ -1,7 +1,21 @@
-﻿
+﻿@model GCD0803TodoManagement.Models.Todo
 @{
 	ViewBag.Title = "Details";
 }
 
 <h2>Details of TodoesController</h2>
 
+@Html.ActionLink(
+	"Back to Index page",
+	"Index",
+	"Todoes",
+	null,
+	new { @class = "btn btn-primary" })
+
+<div class="panel panel-info">
+	<div class="panel-heading">Description: @Model.Description </div>
+	<div class="panel-body">
+		<p>Category: @Model.Category</p>
+		<p>Due Date: @Model.DueDate</p>
+	</div>
+</div>

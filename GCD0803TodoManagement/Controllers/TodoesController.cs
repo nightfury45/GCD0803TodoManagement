@@ -1,6 +1,7 @@
 ﻿using GCD0803TodoManagement.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace GCD0803TodoManagement.Controllers
@@ -34,9 +35,13 @@ namespace GCD0803TodoManagement.Controllers
 			return View(_todoes);
 		}
 
-		public ActionResult Details()
+		public ActionResult Details(int id)
 		{
-			return View();
+			var todo = _todoes.SingleOrDefault(t => t.Id == id);
+
+			if (todo == null) return HttpNotFound();
+
+			return View(todo);
 		}
 	}
 }
