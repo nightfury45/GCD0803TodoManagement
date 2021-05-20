@@ -1,27 +1,37 @@
 ﻿using GCD0803TodoManagement.Models;
 using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace GCD0803TodoManagement.Controllers
 {
 	public class TodoesController : Controller
 	{
-		private Todo _todo;
+		private List<Todo> _todoes;
 
 		public TodoesController()
 		{
-			_todo = new Todo()
+			_todoes = new List<Todo>();
+			_todoes.Add(new Todo()
 			{
 				Id = 1,
-				Category = "Family",
 				Description = "Buy Milk",
+				Category = "Family",
 				DueDate = DateTime.Now
-			};
+			});
+
+			_todoes.Add(new Todo()
+			{
+				Id = 2,
+				Description = "Kill Bill",
+				Category = "Professional",
+				DueDate = DateTime.Now
+			});
 		}
 		// GET: Todoes
 		public ActionResult Index()
 		{
-			return View(_todo);
+			return View(_todoes);
 		}
 
 		public ActionResult Details()
