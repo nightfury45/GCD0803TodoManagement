@@ -35,8 +35,10 @@ namespace GCD0803TodoManagement.Controllers
 			return View(_todoes);
 		}
 
-		public ActionResult Details(int id)
+		public ActionResult Details(int? id)
 		{
+			if (id == null) return HttpNotFound();
+
 			var todo = _todoes.SingleOrDefault(t => t.Id == id);
 
 			if (todo == null) return HttpNotFound();
