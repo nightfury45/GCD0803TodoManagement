@@ -1,4 +1,5 @@
 ﻿using GCD0803TodoManagement.Models;
+using Microsoft.Ajax.Utilities;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -13,9 +14,14 @@ namespace GCD0803TodoManagement.Controllers
 			_context = new ApplicationDbContext();
 		}
 		// GET: Todoes
-		public ActionResult Index()
+		public ActionResult Index(string searchString)
 		{
 			var todoes = _context.Todoes.ToList();
+			if (!searchString.IsNullOrWhiteSpace())
+			{
+				todoes = _context.Todoes.Where(t => t.Description.Contains(searchString)).ToList();
+			}
+
 			return View(todoes);
 		}
 

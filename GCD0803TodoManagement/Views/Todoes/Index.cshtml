@@ -15,6 +15,17 @@
 			 )
 </div>
 
+@using (Html.BeginForm("Index", "Todoes", FormMethod.Get))
+{
+	<div class="form-group">
+		<label>Search by Description name:</label>
+		@Html.TextBox("searchString", null, new { @class = "form-control" })
+	</div>
+	<div class="form-group">
+		<button type="submit" class="btn btn-primary">Search</button>
+	</div>
+}
+
 <table class="table table-bordered">
 	<thead>
 		<tr>
