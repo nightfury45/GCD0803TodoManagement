@@ -30,6 +30,20 @@ namespace GCD0803TodoManagement.Controllers
 			return View(todo);
 		}
 
+		public ActionResult Delete(int? id)
+		{
+			if (id == null) return HttpNotFound();
+
+			var todo = _context.Todoes.SingleOrDefault(t => t.Id == id);
+
+			if (todo == null) return HttpNotFound();
+
+			_context.Todoes.Remove(todo);
+			_context.SaveChanges();
+
+			return RedirectToAction("Index");
+		}
+
 		public ActionResult Create()
 		{
 			return View();
