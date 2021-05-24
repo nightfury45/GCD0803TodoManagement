@@ -4,13 +4,14 @@
 }
 
 <h2>Details of TodoesController</h2>
-
-@Html.ActionLink(
-	"Back to Index page",
-	"Index",
-	"Todoes",
-	null,
-	new { @class = "btn btn-primary" })
+<div class="form-group">
+	@Html.ActionLink(
+		"Back to Index page",
+		"Index",
+		"Todoes",
+		null,
+		new { @class = "btn btn-primary" })
+</div>
 
 <div class="panel panel-info">
 	<div class="panel-heading">Description: @Model.Description </div>

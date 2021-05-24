@@ -44,9 +44,26 @@ namespace GCD0803TodoManagement.Controllers
 			return RedirectToAction("Index");
 		}
 
+		[HttpGet]
 		public ActionResult Create()
 		{
 			return View();
+		}
+
+		[HttpPost]
+		public ActionResult Create(Todo todo)
+		{
+			var newTodo = new Todo()
+			{
+				Description = todo.Description,
+				Category = todo.Category,
+				DueDate = todo.DueDate
+			};
+
+			_context.Todoes.Add(newTodo);
+			_context.SaveChanges();
+
+			return RedirectToAction("Index");
 		}
 	}
 }
