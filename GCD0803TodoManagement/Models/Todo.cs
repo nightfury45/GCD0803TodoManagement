@@ -9,6 +9,8 @@ namespace GCD0803TodoManagement.Models
 		public int Id { get; set; }
 		[Required]
 		public string Description { get; set; }
+		[DataType(DataType.Date)]
+		[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
 		[Required]
 		public DateTime DueDate { get; set; }
 		[Required]
