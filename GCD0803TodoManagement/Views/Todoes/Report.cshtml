@@ -1,0 +1,36 @@
+﻿@model IEnumerable<GCD0803TodoManagement.ViewModels.SatisticalReportViewModel>
+@{
+	ViewBag.Title = "Report";
+}
+
+<h2>Report</h2>
+
+<div class="form-group">
+	@Html.ActionLink(
+			 "Back to My Todoes",
+			 "Index",
+			 "Todoes",
+			 null,
+			 new { @class = "btn btn-primary" }
+			 )
+</div>
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th scope="col">Category Id</th>
+			<th scope="col">Category Quantity</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var report in Model)
+		{
+			<tr>
+				<td>@report.CategoryId</td>
+				<td>@report.CategoryQuantity</td>
+
+			</tr>
+		}
+
+	</tbody>
+</table>

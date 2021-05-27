@@ -194,6 +194,7 @@
     <Compile Include="Models\Todo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\SatisticalReportViewModel.cs" />
     <Compile Include="ViewModels\TodoCategoriesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -256,6 +257,7 @@
     <Content Include="Views\Todoes\Details.cshtml" />
     <Content Include="Views\Todoes\Create.cshtml" />
     <Content Include="Views\Todoes\Edit.cshtml" />
+    <Content Include="Views\Todoes\Report.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
