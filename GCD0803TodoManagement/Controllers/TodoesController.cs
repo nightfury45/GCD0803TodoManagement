@@ -1,4 +1,5 @@
 ﻿using GCD0803TodoManagement.Models;
+using GCD0803TodoManagement.ViewModels;
 using Microsoft.Ajax.Utilities;
 using System.Data.Entity;
 using System.Linq;
@@ -59,7 +60,11 @@ namespace GCD0803TodoManagement.Controllers
 		[HttpGet]
 		public ActionResult Create()
 		{
-			return View();
+			var viewModel = new TodoCategoriesViewModel()
+			{
+				Categories = _context.Categories.ToList()
+			};
+			return View(viewModel);
 		}
 
 		[HttpPost]
