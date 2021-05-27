@@ -72,13 +72,18 @@ namespace GCD0803TodoManagement.Controllers
 		{
 			if (!ModelState.IsValid)
 			{
-				return View(todo);
+				var viewModel = new TodoCategoriesViewModel()
+				{
+					Todo = todo,
+					Categories = _context.Categories.ToList()
+				};
+				return View(viewModel);
 			}
 
 			var newTodo = new Todo()
 			{
 				Description = todo.Description,
-				Category = todo.Category,
+				CategoryId = todo.CategoryId,
 				DueDate = todo.DueDate
 			};
 
