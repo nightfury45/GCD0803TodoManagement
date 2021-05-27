@@ -33,7 +33,9 @@ namespace GCD0803TodoManagement.Controllers
 		{
 			if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-			var todo = _context.Todoes.SingleOrDefault(t => t.Id == id);
+			var todo = _context.Todoes
+				.Include(t => t.Category)
+				.SingleOrDefault(t => t.Id == id);
 
 			if (todo == null) return HttpNotFound();
 

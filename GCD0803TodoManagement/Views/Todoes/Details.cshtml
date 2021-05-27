@@ -16,7 +16,7 @@
 <div class="panel panel-info">
 	<div class="panel-heading">Description: @Model.Description </div>
 	<div class="panel-body">
-		<p>Category: @Model.Category</p>
-		<p>Due Date: @Model.DueDate</p>
+		<p>Category: @Model.Category.Name</p>
+		<p>Due Date: @Model.DueDate.ToString("dd/MMM/yyyy")</p>
 	</div>
 </div>
