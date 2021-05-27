@@ -14,6 +14,7 @@ namespace GCD0803TodoManagement.Models
 		[Required]
 		public DateTime DueDate { get; set; }
 		[Required]
-		public string Category { get; set; }
+		public int CategoryId { get; set; }
+		public Category Category { get; set; } // Link Object
 	}
 }
