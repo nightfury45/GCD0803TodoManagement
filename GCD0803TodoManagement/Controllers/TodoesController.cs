@@ -20,7 +20,7 @@ namespace GCD0803TodoManagement.Controllers
 			var todoes = _context.Todoes.ToList();
 			if (!searchString.IsNullOrWhiteSpace())
 			{
-				todoes = _context.Todoes.Where(t => t.Description.Contains(searchString)).ToList();
+				todoes = todoes.Where(t => t.Description.Contains(searchString)).ToList();
 			}
 
 			return View(todoes);
