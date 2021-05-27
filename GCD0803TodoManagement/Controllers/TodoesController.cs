@@ -1,5 +1,6 @@
 ﻿using GCD0803TodoManagement.Models;
 using Microsoft.Ajax.Utilities;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -17,7 +18,9 @@ namespace GCD0803TodoManagement.Controllers
 		// GET: Todoes
 		public ActionResult Index(string searchString)
 		{
-			var todoes = _context.Todoes.ToList();
+			var todoes = _context.Todoes
+				.Include(t => t.Category)
+				.ToList();
 			if (!searchString.IsNullOrWhiteSpace())
 			{
 				todoes = todoes.Where(t => t.Description.Contains(searchString)).ToList();
