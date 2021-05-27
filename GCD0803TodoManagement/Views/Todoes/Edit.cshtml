@@ -8,6 +8,7 @@
 @using (Html.BeginForm("Edit", "Todoes", FormMethod.Post))
 {
 	@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+	@Html.HiddenFor(m => m.Todo.Id)
 	<div class="form-group">
 		@Html.LabelFor(m => m.Todo.Description)
 		@Html.EditorFor(m => m.Todo.Description, new { htmlAttributes = new { @class = "form-control" } })

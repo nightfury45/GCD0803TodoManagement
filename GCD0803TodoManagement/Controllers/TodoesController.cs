@@ -116,7 +116,12 @@ namespace GCD0803TodoManagement.Controllers
 		{
 			if (!ModelState.IsValid)
 			{
-				return View(todo);
+				var viewModel = new TodoCategoriesViewModel()
+				{
+					Todo = todo,
+					Categories = _context.Categories.ToList()
+				};
+				return View(viewModel);
 			}
 			var todoInDb = _context.Todoes.SingleOrDefault(t => t.Id == todo.Id);
 
@@ -124,7 +129,7 @@ namespace GCD0803TodoManagement.Controllers
 
 			todoInDb.Description = todo.Description;
 			todoInDb.DueDate = todo.DueDate;
-			todoInDb.Category = todo.Category;
+			todoInDb.CategoryId = todo.CategoryId;
 
 			_context.SaveChanges();
 
