@@ -2,7 +2,7 @@
 {
 	public class SatisticalReportViewModel
 	{
-		public int CategoryId { get; set; }
+		public string CategoryName { get; set; }
 		public int CategoryQuantity { get; set; }
 	}
 }

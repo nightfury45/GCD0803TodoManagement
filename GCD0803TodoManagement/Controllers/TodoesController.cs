@@ -146,14 +146,14 @@ namespace GCD0803TodoManagement.Controllers
 				.Include(t => t.Category)
 				.ToList();
 
-			var groupBy = todoesInDb.GroupBy(t => t.CategoryId).ToList();
+			var groupBy = todoesInDb.GroupBy(t => t.Category.Name).ToList();
 
-			foreach (var categoryIdGroup in groupBy)
+			foreach (var categoryGroup in groupBy)
 			{
-				var categoryQuantity = categoryIdGroup.Select(c => c.Category).Count();
+				var categoryQuantity = categoryGroup.Select(c => c.Category).Count();
 				viewModel.Add(new SatisticalReportViewModel()
 				{
-					CategoryId = categoryIdGroup.Key,
+					CategoryName = categoryGroup.Key,
 					CategoryQuantity = categoryQuantity
 				});
 			}
