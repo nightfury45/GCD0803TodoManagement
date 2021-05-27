@@ -102,7 +102,13 @@ namespace GCD0803TodoManagement.Controllers
 
 			if (todoInDb == null) return HttpNotFound();
 
-			return View(todoInDb);
+			var viewModel = new TodoCategoriesViewModel()
+			{
+				Todo = todoInDb,
+				Categories = _context.Categories.ToList()
+			};
+
+			return View(viewModel);
 		}
 
 		[HttpPost]
