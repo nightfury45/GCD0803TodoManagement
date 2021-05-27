@@ -26,6 +26,7 @@ namespace GCD0803TodoManagement.Models
 		}
 
 		public DbSet<Todo> Todoes { get; set; }
+		public DbSet<Category> Categories { get; set; }
 
 		public static ApplicationDbContext Create()
 		{
