@@ -190,12 +190,21 @@
     <Compile Include="Migrations\202105310112064_AddUserFKToTodoesTable.Designer.cs">
       <DependentUpon>202105310112064_AddUserFKToTodoesTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105310501452_AddUsersInfosTable.cs" />
+    <Compile Include="Migrations\202105310501452_AddUsersInfosTable.Designer.cs">
+      <DependentUpon>202105310501452_AddUsersInfosTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105310521014_UpdateUsersInfosTable.cs" />
+    <Compile Include="Migrations\202105310521014_UpdateUsersInfosTable.Designer.cs">
+      <DependentUpon>202105310521014_UpdateUsersInfosTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Todo.cs" />
+    <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\SatisticalReportViewModel.cs" />
@@ -291,6 +300,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105310112064_AddUserFKToTodoesTable.resx">
       <DependentUpon>202105310112064_AddUserFKToTodoesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105310501452_AddUsersInfosTable.resx">
+      <DependentUpon>202105310501452_AddUsersInfosTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105310521014_UpdateUsersInfosTable.resx">
+      <DependentUpon>202105310521014_UpdateUsersInfosTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -9,7 +9,7 @@ namespace GCD0803TodoManagement.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(GCD0803TodoManagement.Models.ApplicationDbContext context)
