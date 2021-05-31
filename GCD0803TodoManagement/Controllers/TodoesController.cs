@@ -165,13 +165,16 @@ namespace GCD0803TodoManagement.Controllers
 		{
 			var viewModel = new List<SatisticalReportViewModel>();
 
+			var userId = User.Identity.GetUserId();
+
 			var todoesInDb = _context.Todoes
 				.Include(t => t.Category)
+				.Where(t => t.UserId.Equals(userId))
 				.ToList();
 
-			var groupBy = todoesInDb.GroupBy(t => t.Category.Name).ToList();
+			var todoesGroupByName = todoesInDb.GroupBy(t => t.Category.Name).ToList();
 
-			foreach (var categoryGroup in groupBy)
+			foreach (var categoryGroup in todoesGroupByName)
 			{
 				var categoryQuantity = categoryGroup.Select(c => c.Category).Count();
 				viewModel.Add(new SatisticalReportViewModel()
