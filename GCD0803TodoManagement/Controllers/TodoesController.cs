@@ -55,7 +55,11 @@ namespace GCD0803TodoManagement.Controllers
 		{
 			if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-			var todo = _context.Todoes.SingleOrDefault(t => t.Id == id);
+			var userId = User.Identity.GetUserId();
+
+			var todo = _context.Todoes
+				.Where(t => t.UserId.Equals(userId))
+				.SingleOrDefault(t => t.Id == id);
 
 			if (todo == null) return HttpNotFound();
 
@@ -88,11 +92,14 @@ namespace GCD0803TodoManagement.Controllers
 				return View(viewModel);
 			}
 
+			var userId = User.Identity.GetUserId();
+
 			var newTodo = new Todo()
 			{
 				Description = todo.Description,
 				CategoryId = todo.CategoryId,
-				DueDate = todo.DueDate
+				DueDate = todo.DueDate,
+				UserId = userId
 			};
 
 			_context.Todoes.Add(newTodo);
@@ -106,7 +113,11 @@ namespace GCD0803TodoManagement.Controllers
 		{
 			if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-			var todoInDb = _context.Todoes.SingleOrDefault(t => t.Id == id);
+			var userId = User.Identity.GetUserId();
+
+			var todoInDb = _context.Todoes
+				.Where(t => t.UserId.Equals(userId))
+				.SingleOrDefault(t => t.Id == id);
 
 			if (todoInDb == null) return HttpNotFound();
 
@@ -131,7 +142,12 @@ namespace GCD0803TodoManagement.Controllers
 				};
 				return View(viewModel);
 			}
-			var todoInDb = _context.Todoes.SingleOrDefault(t => t.Id == todo.Id);
+
+			var userId = User.Identity.GetUserId();
+
+			var todoInDb = _context.Todoes
+				.Where(t => t.UserId.Equals(userId))
+				.SingleOrDefault(t => t.Id == todo.Id);
 
 			if (todoInDb == null) return HttpNotFound();
 
