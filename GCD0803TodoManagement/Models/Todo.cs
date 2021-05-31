@@ -16,5 +16,7 @@ namespace GCD0803TodoManagement.Models
 		[Required]
 		public int CategoryId { get; set; }
 		public Category Category { get; set; } // Link Object
+		public string UserId { get; set; }
+		public ApplicationUser User { get; set; }
 	}
 }
