@@ -207,11 +207,16 @@
     <Compile Include="Migrations\202106030056086_AddUserInfosTable.Designer.cs">
       <DependentUpon>202106030056086_AddUserInfosTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106030407454_AddTeamsTable.cs" />
+    <Compile Include="Migrations\202106030407454_AddTeamsTable.Designer.cs">
+      <DependentUpon>202106030407454_AddTeamsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Team.cs" />
     <Compile Include="Models\Todo.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -323,6 +328,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106030056086_AddUserInfosTable.resx">
       <DependentUpon>202106030056086_AddUserInfosTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106030407454_AddTeamsTable.resx">
+      <DependentUpon>202106030407454_AddTeamsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
