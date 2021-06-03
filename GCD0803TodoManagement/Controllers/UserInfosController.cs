@@ -1,6 +1,7 @@
 ﻿using GCD0803TodoManagement.Models;
 using Microsoft.AspNet.Identity;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 
 namespace GCD0803TodoManagement.Controllers
@@ -33,6 +34,20 @@ namespace GCD0803TodoManagement.Controllers
 			if (userInfo == null) return HttpNotFound();
 
 			return View(userInfo);
+		}
+
+		[HttpPost]
+		public ActionResult Edit(UserInfo userInfo)
+		{
+			var userInfoInDb = _context.UsersInfos.SingleOrDefault(u => u.UserId.Equals(userInfo.UserId));
+
+			if (userInfo == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+			userInfoInDb.FullName = userInfo.FullName;
+			userInfoInDb.Age = userInfo.Age;
+			_context.SaveChanges();
+
+			return RedirectToAction("Index");
 		}
 	}
 }
