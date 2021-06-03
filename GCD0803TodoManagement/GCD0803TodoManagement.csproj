@@ -171,6 +171,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TodoesController.cs" />
+    <Compile Include="Controllers\UserInfosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -275,6 +276,7 @@
     <Content Include="Views\Todoes\Create.cshtml" />
     <Content Include="Views\Todoes\Edit.cshtml" />
     <Content Include="Views\Todoes\Report.cshtml" />
+    <Content Include="Views\UserInfos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
