@@ -198,6 +198,10 @@
     <Compile Include="Migrations\202105310521014_UpdateUsersInfosTable.Designer.cs">
       <DependentUpon>202105310521014_UpdateUsersInfosTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106030056086_AddUserInfosTable.cs" />
+    <Compile Include="Migrations\202106030056086_AddUserInfosTable.Designer.cs">
+      <DependentUpon>202106030056086_AddUserInfosTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
@@ -306,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105310521014_UpdateUsersInfosTable.resx">
       <DependentUpon>202105310521014_UpdateUsersInfosTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106030056086_AddUserInfosTable.resx">
+      <DependentUpon>202106030056086_AddUserInfosTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
