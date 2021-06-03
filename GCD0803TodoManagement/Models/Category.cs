@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using GCD0803TodoManagement.UniqueAttribute;
+using System.ComponentModel.DataAnnotations;
 
 namespace GCD0803TodoManagement.Models
 {
@@ -8,6 +9,7 @@ namespace GCD0803TodoManagement.Models
 		public int Id { get; set; }
 		[Required]
 		[StringLength(255)]
+		[Unique(ErrorMessage = "Category already exist !!")]
 		public string Name { get; set; }
 	}
 }
