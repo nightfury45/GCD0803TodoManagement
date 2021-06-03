@@ -29,6 +29,7 @@ namespace GCD0803TodoManagement.Models
 		public DbSet<Category> Categories { get; set; }
 		public DbSet<UserInfo> UsersInfos { get; set; }
 		public DbSet<Team> Teams { get; set; }
+		public DbSet<TeamUser> TeamsUsers { get; set; }
 
 		public static ApplicationDbContext Create()
 		{
