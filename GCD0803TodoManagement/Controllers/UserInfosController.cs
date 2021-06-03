@@ -23,5 +23,16 @@ namespace GCD0803TodoManagement.Controllers
 
 			return View(userInfo);
 		}
+
+		[HttpGet]
+		public ActionResult Edit()
+		{
+			var userId = User.Identity.GetUserId();
+			var userInfo = _context.UsersInfos.SingleOrDefault(u => u.UserId.Equals(userId));
+
+			if (userInfo == null) return HttpNotFound();
+
+			return View(userInfo);
+		}
 	}
 }
