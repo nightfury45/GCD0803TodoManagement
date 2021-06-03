@@ -10,5 +10,6 @@ namespace GCD0803TodoManagement.Models
 		public string UserId { get; set; }
 		public ApplicationUser User { get; set; }
 		public string FullName { get; set; }
+		public int Age { get; set; }
 	}
 }
