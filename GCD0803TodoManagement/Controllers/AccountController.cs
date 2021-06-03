@@ -166,12 +166,17 @@ namespace GCD0803TodoManagement.Controllers
 			if (ModelState.IsValid)
 			{
 				var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-				var userInfo = new UserInfo { UserId = user.Id, FullName = user.Email };
 				var result = await UserManager.CreateAsync(user, model.Password);
 				if (result.Succeeded)
 				{
+					var userInfo = new UserInfo
+					{
+						FullName = model.FullName,
+						Age = model.Age,
+						UserId = user.Id
+					};
+					_context.UsersInfos.Add(userInfo);
 					_context.SaveChanges();
-
 					await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
 					// For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
