@@ -279,10 +279,10 @@
     <Content Include="Views\Todoes\Report.cshtml" />
     <Content Include="Views\UserInfos\Index.cshtml" />
     <Content Include="Views\UserInfos\Edit.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Categories\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
