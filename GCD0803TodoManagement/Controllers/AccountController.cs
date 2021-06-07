@@ -156,6 +156,12 @@ namespace GCD0803TodoManagement.Controllers
 			return View();
 		}
 
+		[Authorize(Roles = "admin")]
+		public ActionResult CreateManager()
+		{
+			return View();
+		}
+
 		//
 		// POST: /Account/Register
 		[HttpPost]

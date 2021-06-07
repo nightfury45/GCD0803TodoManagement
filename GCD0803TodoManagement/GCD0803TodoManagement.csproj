@@ -302,6 +302,7 @@
     <Content Include="Views\Teams\Members.cshtml" />
     <Content Include="Views\Teams\AddMembers.cshtml" />
     <Content Include="Views\Teams\Mine.cshtml" />
+    <Content Include="Views\Account\CreateManager.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
