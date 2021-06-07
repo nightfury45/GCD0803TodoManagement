@@ -1,4 +1,5 @@
 ﻿using GCD0803TodoManagement.Models;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -42,6 +43,18 @@ namespace GCD0803TodoManagement.Controllers
 			_context.Teams.Add(newTeam);
 			_context.SaveChanges();
 			return RedirectToAction("Index");
+		}
+		[HttpGet]
+		public ActionResult Members(int? id)
+		{
+			if (id == null)
+				return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+			var members = _context.TeamsUsers
+				.Include(t => t.User)
+				.Where(t => t.TeamId == id)
+				.Select(t => t.User);
+
+			return View(members);
 		}
 	}
 }
