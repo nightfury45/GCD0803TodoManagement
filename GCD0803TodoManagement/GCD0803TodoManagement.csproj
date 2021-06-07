@@ -229,6 +229,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="UniqueAttribute\Unique.cs" />
     <Compile Include="ViewModels\SatisticalReportViewModel.cs" />
+    <Compile Include="ViewModels\TeamUsersViewModel.cs" />
     <Compile Include="ViewModels\TodoCategoriesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

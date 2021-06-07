@@ -1,4 +1,5 @@
 ﻿using GCD0803TodoManagement.Models;
+using GCD0803TodoManagement.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
@@ -63,17 +64,23 @@ namespace GCD0803TodoManagement.Controllers
 			return View(members);
 		}
 		[HttpGet]
-		public ActionResult AddMembers(int id)
+		public ActionResult AddMembers(int? id)
 		{
-			var usersInDb = _context.Users.ToList();
+			if (id == null)
+				return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
 
-			var usersInTeam = _context.TeamsUsers
+			if (_context.TeamsUsers.SingleOrDefault(t => t.TeamId == id) == null)
+				return HttpNotFound();
+
+			var usersInDb = _context.Users.ToList();      // User trong Db
+
+			var usersInTeam = _context.TeamsUsers         // User trong Team
 				.Include(t => t.User)
 				.Where(t => t.TeamId == id)
 				.Select(t => t.User)
 				.ToList();
 
-			var usersToAdd = new List<ApplicationUser>();
+			var usersToAdd = new List<ApplicationUser>();       // Init List Users to Add Team
 
 			foreach (var user in usersInDb)
 			{
@@ -84,8 +91,12 @@ namespace GCD0803TodoManagement.Controllers
 				}
 			}
 
-			return View(usersToAdd);
+			var viewModel = new TeamUsersViewModel
+			{
+				TeamId = (int)id,
+				Users = usersToAdd
+			};
+			return View(viewModel);
 		}
-
 	}
 }
