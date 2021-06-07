@@ -16,12 +16,22 @@
 	<p class="lead">An professional application to manage tasks.</p>
 	@if (User.IsInRole("admin"))
 	{
-		@Html.ActionLink(
-		 "Create a new Manager",
-		 "CreateManager",
-		 "Account",
-		 null,
-		 new { @class = "btn btn-primary" }
-		 )
+		<div class="form-group">
+			@Html.ActionLink(
+			 "Create a new Manager",
+			 "CreateManager",
+			 "Account",
+			 null,
+			 new { @class = "btn btn-primary" }
+			 )
+
+			@Html.ActionLink(
+			 "Manager Managers",
+			 "ShowManagers",
+			 "Admin",
+			 null,
+			 new { @class = "btn btn-success" }
+			 )
+		</div>
 	}
 </div>
