@@ -169,6 +169,7 @@ namespace GCD0803TodoManagement.Controllers
 				var result = await UserManager.CreateAsync(user, model.Password);
 				if (result.Succeeded)
 				{
+					UserManager.AddToRole(user.Id, "user");
 					var userInfo = new UserInfo
 					{
 						FullName = model.FullName,
