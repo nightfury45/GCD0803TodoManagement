@@ -1,4 +1,7 @@
 ﻿using GCD0803TodoManagement.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
@@ -9,9 +12,12 @@ namespace GCD0803TodoManagement.Controllers
 	public class TeamsController : Controller
 	{
 		private ApplicationDbContext _context;
+		private UserManager<ApplicationUser> _userManager;
 		public TeamsController()
 		{
 			_context = new ApplicationDbContext();
+			_userManager = new UserManager<ApplicationUser>(
+				new UserStore<ApplicationUser>(new ApplicationDbContext()));
 		}
 		// GET: Teams
 		[HttpGet]
@@ -56,5 +62,30 @@ namespace GCD0803TodoManagement.Controllers
 
 			return View(members);
 		}
+		[HttpGet]
+		public ActionResult AddMembers(int id)
+		{
+			var usersInDb = _context.Users.ToList();
+
+			var usersInTeam = _context.TeamsUsers
+				.Include(t => t.User)
+				.Where(t => t.TeamId == id)
+				.Select(t => t.User)
+				.ToList();
+
+			var usersToAdd = new List<ApplicationUser>();
+
+			foreach (var user in usersInDb)
+			{
+				if (!usersInTeam.Contains(user) &&
+					_userManager.GetRoles(user.Id)[0].Equals("user"))
+				{
+					usersToAdd.Add(user);
+				}
+			}
+
+			return View(usersToAdd);
+		}
+
 	}
 }
