@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace GCD0803TodoManagement
@@ -17,6 +13,12 @@ namespace GCD0803TodoManagement
 					name: "Default",
 					url: "{controller}/{action}/{id}",
 					defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+			);
+
+			routes.MapRoute(
+					name: "RemoveMember",
+					url: "{controller}/{action}/{id}/{userId}",
+					new { controller = "Teams", action = "RemoveMember", id = "", userId = "" }
 			);
 		}
 	}

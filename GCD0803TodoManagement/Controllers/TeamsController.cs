@@ -54,12 +54,14 @@ namespace GCD0803TodoManagement.Controllers
 		[HttpGet]
 		public ActionResult Members(int? id)
 		{
+
 			if (id == null)
 				return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
 			var members = _context.TeamsUsers
 				.Include(t => t.User)
 				.Where(t => t.TeamId == id)
 				.Select(t => t.User);
+			ViewBag.TeamId = id;
 
 			return View(members);
 		}
@@ -112,6 +114,19 @@ namespace GCD0803TodoManagement.Controllers
 			_context.SaveChanges();
 
 			return RedirectToAction("Members", new { id = model.TeamId });
+		}
+		[HttpGet]
+		public ActionResult RemoveMember(int id, string userId)
+		{
+			var teamUserToRemove = _context.TeamsUsers
+				.SingleOrDefault(t => t.TeamId == id && t.UserId == userId);
+
+			if (teamUserToRemove == null)
+				return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
+
+			_context.TeamsUsers.Remove(teamUserToRemove);
+			_context.SaveChanges();
+			return RedirectToAction("Members", new { id = id });
 		}
 	}
 }
