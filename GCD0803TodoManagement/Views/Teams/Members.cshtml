@@ -16,14 +16,14 @@
 			{
 				<li class="list-group-item">
 					@user.Email
-					<div class="float-right">
-						<span>
+					<div>
+						<span class="text-right">
 							@Html.ActionLink(
 												 "Remove",
 												 "RemoveMember",
 												 "Teams",
 												 new { id = ViewBag.TeamId, userId = user.Id },
-												 new { @class = "text-danger" }
+												 new { @class = "text-danger text-right" }
 							)
 
 						</span>

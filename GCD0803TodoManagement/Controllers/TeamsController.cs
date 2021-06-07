@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace GCD0803TodoManagement.Controllers
 {
-	[Authorize(Roles = "manager")]
+	[Authorize]
 	public class TeamsController : Controller
 	{
 		private ApplicationDbContext _context;
@@ -21,6 +21,8 @@ namespace GCD0803TodoManagement.Controllers
 				new UserStore<ApplicationUser>(new ApplicationDbContext()));
 		}
 		// GET: Teams
+		[Authorize(Roles = "manager")]
+
 		[HttpGet]
 		public ActionResult Index()
 		{
@@ -29,12 +31,16 @@ namespace GCD0803TodoManagement.Controllers
 		}
 
 		[HttpGet]
+		[Authorize(Roles = "manager")]
+
 		public ActionResult Create()
 		{
 			return View();
 		}
 
 		[HttpPost]
+		[Authorize(Roles = "manager")]
+
 		public ActionResult Create(Team team)
 		{
 			if (!ModelState.IsValid)
@@ -52,6 +58,8 @@ namespace GCD0803TodoManagement.Controllers
 			return RedirectToAction("Index");
 		}
 		[HttpGet]
+		[Authorize(Roles = "manager")]
+
 		public ActionResult Members(int? id)
 		{
 
@@ -66,6 +74,8 @@ namespace GCD0803TodoManagement.Controllers
 			return View(members);
 		}
 		[HttpGet]
+		[Authorize(Roles = "manager")]
+
 		public ActionResult AddMembers(int? id)
 		{
 			if (id == null)
@@ -102,6 +112,8 @@ namespace GCD0803TodoManagement.Controllers
 		}
 
 		[HttpPost]
+		[Authorize(Roles = "manager")]
+
 		public ActionResult AddMembers(TeamUser model)
 		{
 			var teamUser = new TeamUser
@@ -116,6 +128,8 @@ namespace GCD0803TodoManagement.Controllers
 			return RedirectToAction("Members", new { id = model.TeamId });
 		}
 		[HttpGet]
+		[Authorize(Roles = "manager")]
+
 		public ActionResult RemoveMember(int id, string userId)
 		{
 			var teamUserToRemove = _context.TeamsUsers
@@ -127,6 +141,21 @@ namespace GCD0803TodoManagement.Controllers
 			_context.TeamsUsers.Remove(teamUserToRemove);
 			_context.SaveChanges();
 			return RedirectToAction("Members", new { id = id });
+		}
+
+		[Authorize(Roles = "user")]
+		[HttpGet]
+		public ActionResult Mine()
+		{
+			var userId = User.Identity.GetUserId();
+
+			var teams = _context.TeamsUsers
+				.Where(t => t.UserId.Equals(userId))
+				.Include(t => t.Team)
+				.Select(t => t.Team)
+				.ToList();
+
+			return View(teams);
 		}
 	}
 }
