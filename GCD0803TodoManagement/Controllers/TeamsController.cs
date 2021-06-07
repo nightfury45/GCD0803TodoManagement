@@ -69,7 +69,7 @@ namespace GCD0803TodoManagement.Controllers
 			if (id == null)
 				return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
 
-			if (_context.TeamsUsers.SingleOrDefault(t => t.TeamId == id) == null)
+			if (_context.Teams.SingleOrDefault(t => t.Id == id) == null)
 				return HttpNotFound();
 
 			var usersInDb = _context.Users.ToList();      // User trong Db
@@ -97,6 +97,21 @@ namespace GCD0803TodoManagement.Controllers
 				Users = usersToAdd
 			};
 			return View(viewModel);
+		}
+
+		[HttpPost]
+		public ActionResult AddMembers(TeamUser model)
+		{
+			var teamUser = new TeamUser
+			{
+				TeamId = model.TeamId,
+				UserId = model.UserId
+			};
+
+			_context.TeamsUsers.Add(teamUser);
+			_context.SaveChanges();
+
+			return RedirectToAction("Members", new { id = model.TeamId });
 		}
 	}
 }
